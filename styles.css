@@ -1,0 +1,108 @@
+body {
+  background-color: #111;
+  color: #f4f4f4;
+}
+
+/* Glitch Effect */
+.glitch {
+  position: relative;
+  font-size: 2.5rem;
+  color: #fff;
+  animation: glitch 1s infinite;
+}
+
+.glitch:before,
+.glitch:after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.glitch:before {
+  left: 2px;
+  text-shadow: -2px 0 red;
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-skew 0.8s infinite linear alternate-reverse;
+}
+
+.glitch:after {
+  left: -2px;
+  text-shadow: -2px 0 blue;
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-skew 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-skew {
+  0% {
+    transform: skew(0deg);
+  }
+  50% {
+    transform: skew(10deg);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+/* Haunted Item Styling */
+.haunted-item {
+  position: relative;
+  cursor: pointer;
+}
+
+.haunted-item .overlay-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: red;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.haunted-item:hover .overlay-text {
+  opacity: 1;
+}
+
+/* centering artifcat */
+.haunted-item {
+    margin: 0 auto;
+    max-width: 300px;
+  }
+  
+  /* Message Box Styling */
+  #message-box {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    color: #f4f4f4;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 20px auto;
+  }
+
+/* Glitch Effect upon click */
+.glitch-effect {
+  animation: glitch 0.8s infinite;
+  color: red;
+}

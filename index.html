@@ -1,11 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- Last Attempt -->
+    <title>Last Transmission</title>
+
+    <!-- Styling: -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <h1>I am IM.</h1>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand mx-auto" href="#">Her Last Transmission</a>
+    </nav>
+
+    <!-- introduction -->
+    <section class="container text-center my-5">
+        <h1 id="signal-detected" class="glitch" data-text="Signal Detected">Signal Detected...</h1>
+        <p class="lead">Strange transmissions from 1937...</p>
+        <button id="start-journey" class="btn btn-danger">Begin the Journey</button>
+
+        <!-- we msut be on you but cannot see you =, to find TODO  -->
+        <audio id="amelia-audio" src="last_words.wav" preload="auto"></audio>
+    </section>
+
+    <!-- ARTIFACTS -->
+    <section id="artifacts" class="container text-center my-5">
+        <!-- compass/ map/ route -->
+        <!-- cockpit -->
+        <div class="haunted-item d-none" id="artifact-1">
+            <img src="cockpit.jpg" alt="Haunted cockpit" class="img-fluid">
+            <p class="overlay-text">Where am I?</p>
+        </div>
+
+        <!-- flgiht log -->
+        <div class="haunted-item d-none" id="artifact-2">
+            <img src="flight_log_may7.jpg" alt="Flight Log" class="img-fluid">
+            <p class="overlay-text">I was here...</p>
+        </div>
+
+        <!--empty seat  -->
+        <!-- <div class="haunted-item d-none" id="artifact-3">
+            <img src="empty-seat.jpg" alt="Empty Seat" class="img-fluid">
+            <p class="overlay-text">They left me here...</p>
+        </div> -->
+
+        <!-- nights pass -->
+        <!-- wwek later, US Navy? -->
+        <!-- abadnoned island -->
+        <!-- campsite -->
+        <!-- death -->
+        <!-- skeleton? -->
+        <!-- shiny object in deep sea / underwater? -->
+    </section>
+
+    <!-- chat box -->
+    <section id="message-box" class="container text-center my-5 d-none">
+        <p class="message-content"></p>
+        <button id="reply" class="btn btn-outline-secondary mt-3">Reply</button>
+    </section>
+
+    <!-- bgm -->
+    <!-- TODO: variety -->
+    <audio id="background-sound" loop>
+        <source src="background_sound.wav" type="audio/wav">
+    </audio>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>
