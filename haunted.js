@@ -51,9 +51,9 @@ function moveCursor() {
 
   // switch
   if (toggleImage) {
-    ghostCursor.style.backgroundImage = "url('/assets/img/amelia_smiling.jpg')";
+    ghostCursor.style.backgroundImage = "url('./assets/img/amelia_smiling.jpg')";
   } else {
-    ghostCursor.style.backgroundImage = "url('/assets/img/amelia_smiling-modified.jpg')"; 
+    ghostCursor.style.backgroundImage = "url('./assets/img/amelia_smiling-modified.jpg')"; 
   }
   toggleImage = !toggleImage; 
   ghostCursor.style.backgroundSize = "cover";
@@ -71,7 +71,7 @@ function moveCursor() {
 // NOT USED
 function showHauntedAmelia() {
   const ameliaImage = document.createElement("img");
-  ameliaImage.src = "/assets/img/amelia_smiling.jpg";
+  ameliaImage.src = "./assets/img/amelia_smiling.jpg";
   ameliaImage.id = "amelia-image";
   ameliaImage.style.width = "300px";
   ameliaImage.style.transition = "filter 1s ease";
@@ -80,7 +80,7 @@ function showHauntedAmelia() {
 
   setTimeout(() => {
     // change to skeletal image after 1.5 seconds
-    ameliaImage.src = "/assets/img/amelia_smiling-modified.jpg";
+    ameliaImage.src = "./assets/img/amelia_smiling-modified.jpg";
   }, 1500);
 
   setTimeout(() => {

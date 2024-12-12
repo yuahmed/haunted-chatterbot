@@ -2,12 +2,12 @@
 //set up to appear after unpacking
 // separate from haunted effects
 const imagePaths = [
-  "/assets/img/AM.png",
-  "/assets/img/EL.png",
-  "/assets/img/IA.png",
-  "/assets/img/EA.png",
-  "/assets/img/RH.png",
-  "/assets/img/ART.png",
+  "./assets/img/AM.png",
+  "./assets/img/EL.png",
+  "./assets/img/IA.png",
+  "./assets/img/EA.png",
+  "./assets/img/RH.png",
+  "./assets/img/ART.png",
 ];
 
 //tracking current image stats
