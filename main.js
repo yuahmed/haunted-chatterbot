@@ -155,11 +155,11 @@ document.getElementById("reply").addEventListener("click", function () {
 
 // play random haunting sounds
 let audioFiles = [
-  "/assets/audio/airplane_crash.mp3",
-  "/assets/audio/background_sound.wav",
-  "/assets/audio/morse_radio_sos.mp3",
-  "/assets/audio/puddle_steps.mp3",
-  "/assets/audio/morse_sos.mp3",
+  "./assets/audio/airplane_crash.mp3",
+  "./assets/audio/background_sound.wav",
+  "./assets/audio/morse_radio_sos.mp3",
+  "./assets/audio/puddle_steps.mp3",
+  "./assets/audio/morse_sos.mp3",
 ];
 
 function playRandomAudio() {
