@@ -1,14 +1,29 @@
 body {
-  background-color: #111;
+  background-color: #494a49;
   color: #f4f4f4;
 }
 
-/* Glitch Effect */
+/* system messages */
+.sys,
+.sig {
+  font-family: "Lucida Console";
+}
+
+.sys {
+  color: yellow;
+}
+
+/* signal */
+#signal-detected:hover {
+  color: yellow;
+}
+
+/* glitches */
 .glitch {
   position: relative;
   font-size: 2.5rem;
   color: #fff;
-  animation: glitch 1s infinite;
+  animation: glitch-element 1s infinite;
 }
 
 .glitch:before,
@@ -23,17 +38,18 @@ body {
   left: 2px;
   text-shadow: -2px 0 red;
   clip: rect(24px, 550px, 90px, 0);
-  animation: glitch-skew 0.8s infinite linear alternate-reverse;
+  animation: glitch-element 0.8s infinite linear alternate-reverse;
 }
 
 .glitch:after {
   left: -2px;
   text-shadow: -2px 0 blue;
   clip: rect(85px, 550px, 140px, 0);
-  animation: glitch-skew 1s infinite linear alternate-reverse;
+  animation: glitch-element 1s infinite linear alternate-reverse;
 }
 
-@keyframes glitch {
+/* Glitch Keyframes */
+@keyframes glitch-element {
   0% {
     transform: translate(0);
   }
@@ -54,29 +70,30 @@ body {
   }
 }
 
-@keyframes glitch-skew {
-  0% {
-    transform: skew(0deg);
-  }
-  50% {
-    transform: skew(10deg);
-  }
-  100% {
-    transform: skew(0deg);
-  }
+/* typewirting effect */
+#typewriter-link {
+  font-family: "Courier New", Courier, monospace;
+  color: #ff5722;
+  transition: opacity 1s ease-in-out;
 }
 
-/* Haunted Item Styling */
+/* ARTIFACTS styles */
 .haunted-item {
   position: relative;
   cursor: pointer;
+  margin: 0 auto;
+  max-width: 300px;
 }
 
 .haunted-item .overlay-text {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  color: red;
+  color: rgb(209, 39, 39);
+  font-family: "Times New Roman";
+  font-weight: bold;
+  font-size: medium;
+  background-color: gainsboro;
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -85,24 +102,142 @@ body {
   opacity: 1;
 }
 
-/* centering artifcat */
-.haunted-item {
-    margin: 0 auto;
-    max-width: 300px;
-  }
-  
-  /* Message Box Styling */
-  #message-box {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    color: #f4f4f4;
-    border-radius: 5px;
-    max-width: 400px;
-    margin: 20px auto;
-  }
+/* message chat box */
+#message-box {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  color: #f4f4f4;
+  border-radius: 5px;
+  max-width: 400px;
+  margin: 20px auto;
+}
 
-/* Glitch Effect upon click */
+/* glitch on click for signal */
 .glitch-effect {
-  animation: glitch 0.8s infinite;
+  animation: glitch-element 0.8s infinite;
   color: red;
+}
+
+/* NPC messages Styling */
+.npc-message {
+  font-family: "Courier New", monospace;
+  font-size: 1.2rem;
+  animation: fadeOut 5s linear;
+  z-index: 5000;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* haunted cursor */
+#ghost-presence {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  z-index: 1000;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+}
+
+/* amelia image styles */
+#amelia-image {
+  position: fixed;
+  bottom: 10%;
+  right: 10%;
+  z-index: 1000;
+}
+
+/*website break effect */
+#fullpage-glitch {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 10000; /* on top */
+  pointer-events: none;
+  display: none;
+  overflow: hidden;
+}
+
+#fullpage-glitch::before,
+#fullpage-glitch::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  animation: glitch-fullscreen 0.5s infinite;
+}
+
+#fullpage-glitch::before {
+  /* left: -2px; */
+  background: rgba(255, 0, 0, 0.8);
+  mix-blend-mode: lighten;
+}
+
+#fullpage-glitch::after {
+  /* left: 2px; */
+  background: rgba(0, 0, 255, 0.8);
+  mix-blend-mode: lighten;
+}
+
+/* full screen glitch animating */
+@keyframes glitch-fullscreen {
+  0% {
+    clip-path: inset(0 0 90% 0);
+    transform: skew(0.5deg);
+    background: rgba(255, 0, 0, 0.8);
+  }
+  20% {
+    clip-path: inset(10% 0 80% 0);
+    transform: skew(-0.5deg);
+    background: rgba(0, 255, 0, 0.8);
+  }
+  40% {
+    clip-path: inset(20% 0 60% 0);
+    transform: skew(0.2deg);
+    background: rgba(0, 0, 255, 0.8);
+  }
+  60% {
+    clip-path: inset(5% 0 70% 0);
+    transform: skew(-0.8deg);
+    background: rgba(255, 255, 0, 0.8);
+  }
+  80% {
+    clip-path: inset(15% 0 75% 0);
+    transform: skew(0.3deg);
+    background: rgba(255, 0, 0, 0.8);
+  }
+  100% {
+    clip-path: inset(0 0 90% 0);
+    transform: skew(-0.5deg);
+    background: rgba(0, 0, 255, 0.8);
+  }
+}
+
+/* refresh page message */
+#refresh-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 2rem;
+  text-align: center;
+  display: none;
+  z-index: 10001;
+  background-color: #d1d136;
+  /* background: none; */
+  clip-path: none;
 }

@@ -2,78 +2,134 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Last Attempt -->
-    <title>Last Transmission</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Last Attempt -->
+  <title>Last Transmission</title>
 
-    <!-- Styling: -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <!-- Styling: -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand mx-auto" href="#">Last Transmission</a>
+  </nav>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand mx-auto" href="#">Her Last Transmission</a>
-    </nav>
+  <!-- INTRODUTION -->
+  <section class="container my-5 text-center">
+    <h1 id="signal-detected" class="glitch" data-text="Signal Detected" style="text-align: center;">
+      incoming signal detected...
+    </h1>
 
-    <!-- introduction -->
-    <section class="container text-center my-5">
-        <h1 id="signal-detected" class="glitch" data-text="Signal Detected">Signal Detected...</h1>
-        <p class="lead">Strange transmissions from 1937...</p>
-        <button id="start-journey" class="btn btn-danger">Begin the Journey</button>
+    <h3 class="mt-5 sys" id="sys_parse" style="display: none">
+      [SYSTEM PARSING...]
+    </h3>
 
-        <!-- we msut be on you but cannot see you =, to find TODO  -->
-        <audio id="amelia-audio" src="last_words.wav" preload="auto"></audio>
-    </section>
+    <div class="sig mt-5" id="last_words_cryptic" style="display: none">
+      <p>[SIGNAL CONTENT]:"^e m*$t be 0n y0u, Bu! w# [@NN0t $E~ Y0*"</p>
+    </div>
 
-    <!-- ARTIFACTS -->
-    <section id="artifacts" class="container text-center my-5">
-        <!-- compass/ map/ route -->
-        <!-- cockpit -->
-        <div class="haunted-item d-none" id="artifact-1">
-            <img src="cockpit.jpg" alt="Haunted cockpit" class="img-fluid">
-            <p class="overlay-text">Where am I?</p>
-        </div>
+    <div class="mt-5 sys" id="response_init" style="display: none">
+      <p class="lead">
+        [SYSTEM]: signal appears to be strange transmissions from 1937...
+      </p>
 
-        <!-- flgiht log -->
-        <div class="haunted-item d-none" id="artifact-2">
-            <img src="flight_log_may7.jpg" alt="Flight Log" class="img-fluid">
-            <p class="overlay-text">I was here...</p>
-        </div>
+      <button id="start-journey" class="btn btn-danger mt-2">
+        UNPACK SIGNAL FURTHER
+      </button>
 
-        <!--empty seat  -->
-        <!-- <div class="haunted-item d-none" id="artifact-3">
-            <img src="empty-seat.jpg" alt="Empty Seat" class="img-fluid">
-            <p class="overlay-text">They left me here...</p>
-        </div> -->
+      <div class="mt-5 sys" id="sys_loading" style="display: none">
+        <h3>[LOADING...]</h3>
+      </div>
+    </div>
 
-        <!-- nights pass -->
-        <!-- wwek later, US Navy? -->
-        <!-- abadnoned island -->
-        <!-- campsite -->
-        <!-- death -->
-        <!-- skeleton? -->
-        <!-- shiny object in deep sea / underwater? -->
-    </section>
+    <audio id="amelia-audio" src="/assets/audio/last_words.wav" preload="auto"></audio>
+  </section>
 
-    <!-- chat box -->
-    <section id="message-box" class="container text-center my-5 d-none">
-        <p class="message-content"></p>
-        <button id="reply" class="btn btn-outline-secondary mt-3">Reply</button>
-    </section>
+  <!-- ARTIFACTS -------------------------------------------------------------------- -->
+  <section id="artifacts" class="container text-center my-5">
+    <!-- final link shows at end -->
+    <div id="link-container" style="text-align: center; margin: 20px 0; position: relative; display: none;">
+      <span id="typewriter-link" style="font-size: 1.5em; opacity: 0;">&nbsp;</span>
+    </div>
+    <!-- div positionig for cursour following -->
+    <div id="chaser" class="d-none"></div>
 
-    <!-- bgm -->
-    <!-- TODO: variety -->
-    <audio id="background-sound" loop>
-        <source src="background_sound.wav" type="audio/wav">
-    </audio>
+    <!-- compass -->
+    <div class="haunted-item d-none mt-2" id="artifact-0">
+      <img src="/assets/img/compass.jpg" alt="old compass" class="img-fluid" />
+      <p class="overlay-text">What just happened? What is this?</p>
+    </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="main.js"></script>
+    <!-- cockpit -->
+    <div class="haunted-item d-none mt-2" id="artifact-1">
+      <img src="/assets/img/cockpit.jpg" alt="Haunted cockpit" class="img-fluid" />
+      <p class="overlay-text">Where am I?</p>
+    </div>
+
+    <!-- flgiht log -->
+    <div class="haunted-item d-none mt-2" id="artifact-2">
+      <img src="/assets/img/flight_log_may7.jpg" alt="Flight Log" class="img-fluid" />
+      <p class="overlay-text">I am in many places...always</p>
+    </div>
+
+    <!--wreckage-->
+    <div class="haunted-item d-none mt-2" id="artifact-3">
+      <img src="/assets/img/plane_wreck.gif" alt="Plane Wreck in Island" class="img-fluid">
+      <p class="overlay-text">They left me here...</p>
+    </div>
+
+    <!-- nights pass -->
+    <div class="haunted-item d-none mt-2" id="artifact-4">
+      <img src="./assets/img/dark_night.jpg" alt="Dark creepy Night" class="img-fluid">
+      <p class="overlay-text">So many nights passing...</p>
+    </div>
+
+    <!-- US Navy? -->
+    <div class="haunted-item d-none mt-2" id="artifact-5">
+      <img src="./assets/img/navy_ship.jpg" alt="Naval ships on sea" class="img-fluid">
+      <p class="overlay-text">I see life out in the water.</p>
+    </div>
+
+    <!-- abadnoned island -->
+    <div class="haunted-item d-none mt-2" id="artifact-6">
+      <img src="./assets/img/abandoned_island.png" alt="Camping wood on shore" class="img-fluid">
+      <p class="overlay-text">Abandon all hope...home...</p>
+    </div>
+
+    <!-- death -->
+    <div class="haunted-item d-none mt-2" id="artifact-7">
+      <img src="./assets/img/bones.jpg" alt="Bone remains in sand" class="img-fluid">
+      <p class="overlay-text">Death...all around...me? us? you...</p>
+    </div>
+
+    <!-- shiny object in deep sea / underwater? -->
+    <div class="haunted-item d-none mt-2" id="artifact-8">
+      <img src="./assets/img/underwater.jpg" alt="Aircraft underwater" class="img-fluid">
+      <p class="overlay-text">I saw this deep down...I don't remember where.</p>
+    </div>
+
+  </section>
+
+  <!-- chat box -->
+  <section id="message-box" class="container text-center my-5 d-none">
+    <p class="message-content"></p>
+    <button id="reply" class="btn btn-outline-secondary mt-3">Reply</button>
+  </section>
+
+  <!-- bgm -->
+  <!-- <audio id="background-sound" loop>
+    <source src="background_sound.wav" type="audio/wav" />
+  </audio> -->
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script>
+  <script src="haunted.js"></script>
+  <script src="mouse.js"></script>
 </body>
 
 </html>
